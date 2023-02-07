@@ -1,7 +1,15 @@
 import React from "react";
+import Header from "./Header";
+import EmpleadoList from "./Empleados/EmpleadoList";
+
 const Home = () => {
     return (
-        <div>en el Home</div>
+        <>
+            <Header/>
+            <EmpleadoList/>
+        </>
+
+        
     );
 };
 export default Home;

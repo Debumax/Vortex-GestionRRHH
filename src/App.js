@@ -1,7 +1,7 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from "./components/Home";
-import Nav from "./components/Nav";
 import EmpleadoList from "./components/Empleados/EmpleadoList";
 import EmpleadoShow from "./components/Empleados/EmpleadoShow";
 import EmpleadoEdit from "./components/Empleados/EmpleadoEdit";
@@ -29,7 +29,13 @@ const router = createBrowserRouter([
   {
     path :'/empleado/show' ,
     element: <EmpleadoShow/>
+  },
+  {
+    path: '/empleado/list',
+    element:<EmpleadoList/>
   }
+
+
 ]);
 
 
@@ -50,7 +56,3 @@ function App() {
 }
 
 export default App;
-
-/*
-
-<Route path="/empleado/show" exact element={EmpleadoShow} />*/
