@@ -1,8 +1,10 @@
-import {combineReducers} from 'redux';
-import teamReducer from './teamReducer';
+/*En el combine reducer es donde se crean los estados globales */
+import { combineReducers } from 'redux';
+import empleadosReducer from './empleadosReducer';
 
 
-export default combineReducers({
+export default combineReducers ({
     //aqui se escribe el stado global
-    pokemonTeam: teamReducer// lo que devuelva el reducer de teamreducer
+    listaEmpleados : empleadosReducer // lo que devuelva el reducer de empleadosReducer
+    // key listaEmpleados
 });

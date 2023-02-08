@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { addEmpleado } from '../../actios'
 
-const EmpleadoCreate= () => {
+const EmpleadoCreate= (props) => {
  
     const [id,setId]=useState('');
     const [nombre,setNombre]=useState('');
@@ -11,49 +13,41 @@ const EmpleadoCreate= () => {
     const [contratacion,setContratacion]=useState('');
     const [salario,setSalario]=useState('');
     const [comision,setComision]=useState('');
-    const [list,setList]=useState();
+
 
     const manejarCambio= (e)=>{
         const valor= e.target.value;
         const name= e.target.name;
 
          switch (name) {
-             case 'nombre':
-                 setNombre(valor);
-                //  console.log('cambio en nombre 1 ');                              
+            case 'nombre':
+                 setNombre(valor);                        
                  break;
-             case 'nombre2':
+            case 'nombre2':
                  setNombre2(valor);
-                //  console.log('cambio en nombre 2 ');
                  break;
-             case 'telefono':
-                 setTelefono(valor);
-                //  console.log('cambio en telefono');
+            case 'telefono':
+                 setTelefono(valor); 
                  break;
-             case 'contratacion':
+            case 'contratacion':
                  setContratacion(valor);
-                //  console.log('cMambio de contratacion');
                  break;
             case 'salario':
                 setSalario(valor);
-                // console.log('cambio en salario' )   ;  
                 break;
             case 'comision':
-                setComision(valor);
-                // console.log('camvio en comision');
+                setComision(valor);  
             default:
-                 break;
-         }
+                break;
+        }
+        setId(uuidv4()); // id unico 
 
     };
 
-
     const manejarEnvio= e => {
         e.preventDefault();
-        
-        setId(1);
         const nuevoEmpleado = {
-            EMPLOYER_ID: uuidv4() ,
+            EMPLOYER_ID: id,
             FIRST_NAME:nombre,
             LAST_NAME:nombre2,
             PHONE_NUMBER:telefono,
@@ -62,10 +56,11 @@ const EmpleadoCreate= () => {
             COMMISSION_PCT:comision,       
         };
 
-        setList(nuevoEmpleado);
-        console.log(nuevoEmpleado);
-
+        console.log( nuevoEmpleado);
+        props.addEmpleado(nuevoEmpleado);
+        console.log("PRIODIDAD MANEJAR ENVIO");
     }; 
+
 
     return (
         <div className="container">
@@ -108,4 +103,5 @@ const EmpleadoCreate= () => {
 
     );
 };
-export default EmpleadoCreate;
+export default connect(null,{addEmpleado} ) (EmpleadoCreate);
+//addEmpleado es la accion que debe hacer en el reducer empleadosreducer

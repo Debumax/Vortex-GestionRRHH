@@ -35,23 +35,14 @@ const router = createBrowserRouter([
     element:<EmpleadoList/>
   }
 
-
 ]);
-
-
 
 function App() {
   return (
     <div >
-      
-      <RouterProvider router={router}>
-    
-      
+      <RouterProvider router={router}>  
       </RouterProvider >
-
-
     </div>
-
   );
 }
 
