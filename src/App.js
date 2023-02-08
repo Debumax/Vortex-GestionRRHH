@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from "./components/Home";
 import EmpleadoList from "./components/Empleados/EmpleadoList";
 import EmpleadoShow from "./components/Empleados/EmpleadoShow";

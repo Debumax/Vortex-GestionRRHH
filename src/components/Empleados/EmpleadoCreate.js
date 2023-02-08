@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { addEmpleado } from '../../actios'
+import { addEmpleado } from '../../actios';
+import { useNavigate } from 'react-router-dom'; // hook 
 
 const EmpleadoCreate= (props) => {
+    const navegar=useNavigate();
  
     const [id,setId]=useState('');
     const [nombre,setNombre]=useState('');
@@ -59,6 +61,9 @@ const EmpleadoCreate= (props) => {
         console.log( nuevoEmpleado);
         props.addEmpleado(nuevoEmpleado);
         console.log("PRIODIDAD MANEJAR ENVIO");
+        navegar('/');
+        
+
     }; 
 
 
@@ -66,7 +71,7 @@ const EmpleadoCreate= (props) => {
         <div className="container">
             <h1 className="display-4 container"> Nuevo Empleado</h1>
 
-            <form className="row g-3 " onSubmit={manejarEnvio} >
+            <form className="row g-3 "  onSubmit={manejarEnvio} action='/'>
                 <div className="col-md-4">
                     <label className="form-label">First name </label>
                     <input type="text" className="form-control" name="nombre"  value={nombre} onChange={manejarCambio} required />
@@ -94,8 +99,8 @@ const EmpleadoCreate= (props) => {
                 </div>
 
                 <div className="col-12">
-                    <button className="btn btn-primary" type="submit" >Guardar</button>
-                    {/* <Link to={`/`} class="btn btn-primary" type="submit"></Link> */}
+                    <button className="btn btn-primary" type="submit">enviar</button>
+                     
                 </div>
             </form>
 
