@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { addEmpleado } from '../../actios';
 import { useNavigate } from 'react-router-dom'; // hook 
@@ -39,6 +38,7 @@ const EmpleadoCreate= (props) => {
                 break;
             case 'comision':
                 setComision(valor);  
+                break;
             default:
                 break;
         }
@@ -57,13 +57,10 @@ const EmpleadoCreate= (props) => {
             SALARY:salario,
             COMMISSION_PCT:comision,       
         };
-
-        console.log( nuevoEmpleado);
         props.addEmpleado(nuevoEmpleado);
-        console.log("PRIODIDAD MANEJAR ENVIO");
-        navegar('/');
-        
 
+          navegar('/');
+        
     }; 
 
 
