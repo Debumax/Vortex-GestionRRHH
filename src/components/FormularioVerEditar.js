@@ -33,6 +33,7 @@ const Formulario=(props)=>{
             setSalario(ver_empleado.SALARY);
             setComision(ver_empleado.COMMISSION_PCT);
             setId(ver_empleado.EMPLOYER_ID);
+            
 
     },[]);
 
@@ -69,7 +70,23 @@ const Formulario=(props)=>{
 
     //me lleva al home (volver) o al "vista de ver" (cancelar)
     const BtnAtras=(e)=>{
-        navegar('/')
+        e.preventDefault();
+        if (botonVC==='Cancelar' && boton==='Guardar') {
+            setBoton('Editar');
+            setBotonVC('Home'); 
+            setNombre(ver_empleado.FIRST_NAME);
+            setNombre2(ver_empleado.LAST_NAME);
+            setTelefono(ver_empleado.PHONE_NUMBER);
+            setContratacion(ver_empleado.HIRE_DATE);
+            setSalario(ver_empleado.SALARY);
+            setComision(ver_empleado.COMMISSION_PCT);
+            setId(ver_empleado.EMPLOYER_ID);
+            setIsDisabled(true);                       
+        }
+        if (botonVC==='Home') {
+            navegar('/');
+        }
+        
     };
 
 
@@ -136,8 +153,8 @@ const Formulario=(props)=>{
                 </div>
     
                 <div className="col-12">
-                    <button className="btn btn-primary" type="submit" >{boton}</button>
-                    <button className="btn btn-primary" onClick={BtnAtras} >{botonVC}</button> 
+                    <button className="btn btn-primary" type="submit" style={{margin:'2%'}} >{boton}</button>
+                    <button className="btn btn-primary" type="text" onClick={BtnAtras} style={{margin:'2%'}} >{botonVC}</button> 
                     
                 </div>
             </form>
@@ -153,11 +170,3 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps,{editarEmpleado})(Formulario);
 
-            /*
-            FIRST_NAME:nombre,
-            LAST_NAME:nombre2,
-            PHONE_NUMBER:telefono,
-            HIRE_DATE:contratacion,
-            SALARY:salario,
-            COMMISSION_PCT:comision, 
-            */

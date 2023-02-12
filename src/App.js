@@ -4,9 +4,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from "./components/Home";
 import EmpleadoList from "./components/Empleados/EmpleadoList";
 import EmpleadoShow from "./components/Empleados/EmpleadoShow";
-import EmpleadoEdit from "./components/Empleados/EmpleadoEdit";
 import EmpleadoCreate from "./components/Empleados/EmpleadoCreate";
 import EmpleadoDelete from "./components/Empleados/EmpleadoDelete";
+
 
 
 const router = createBrowserRouter([
@@ -19,10 +19,6 @@ const router = createBrowserRouter([
     path :'/empleado/new' ,
     element: <EmpleadoCreate/>,
 
-  },
-  {
-    path :'/empleado/edit' ,
-    element: <EmpleadoEdit/>
   },
   {
     path :'/empleado/delete/:empId' ,

@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import FilaEmpleado from "../FilaEmpleado";
-import { addEmpleado } from '../../actios';
 
 
 
 
 const EmpleadoList = (props) => { 
-    
+
     //console.log(props.lista.length)
     const listado = () => {
         return props.lista.map( emp => {
@@ -18,7 +17,7 @@ const EmpleadoList = (props) => {
     return (
         <main className="container">
             <div>
-                <table className="table table-striped">
+                <table className="table table-striped ">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -30,11 +29,11 @@ const EmpleadoList = (props) => {
                             <th>Opcions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-group-divider ">
                         {listado()}                        
                     </tbody>
 
-                </table> 
+                </table>
 
             </div>
             

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { addEmpleado } from '../../actios';
@@ -61,9 +61,11 @@ const EmpleadoCreate= (props) => {
         };
         props.addEmpleado(nuevoEmpleado);
         alert("se agrego con exito");
-
         navegar('/');    
     }; 
+    const BtnAtras=()=>{
+        navegar('/');
+    }
 
 
     return (
@@ -100,7 +102,8 @@ const EmpleadoCreate= (props) => {
                 </div>
 
                 <div className="col-12">
-                    <button className="btn btn-primary" type="submit">enviar</button>
+                    <button className="btn btn-primary" type="submit">Enviar</button>
+                    <button className="btn btn-primary" type="text" onClick={BtnAtras} >Cancelar</button> 
                      
                 </div>
             </form>
