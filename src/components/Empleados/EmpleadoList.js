@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import FilaEmpleado from "../FilaEmpleado";
+import { addEmpleado } from '../../actios';
+
 
 
 
 const EmpleadoList = (props) => { 
     
-
-    var orden=0;
     //console.log(props.lista.length)
     const listado = () => {
         return props.lista.map( emp => {
@@ -21,18 +21,17 @@ const EmpleadoList = (props) => {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>nombre</th>
-                            <th>apellido</th>
-                            <th>telefono</th>
-                            <th>fecha contratacion</th>
-                            <th>sueldo</th>
-                            <th>comision</th>
-                            <th>opcions</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Fecha de Contratacion</th>
+                            <th>Sueldo</th>
+                            <th>Comision</th>
+                            <th>Opcions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {listado()}
-                        
+                        {listado()}                        
                     </tbody>
 
                 </table> 
@@ -48,5 +47,6 @@ const EmpleadoList = (props) => {
 const mapStateToProps = state => {
    return { lista : state.listaEmpleados}
 };
+
 
 export default connect( mapStateToProps )(EmpleadoList);

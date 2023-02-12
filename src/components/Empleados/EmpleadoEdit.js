@@ -1,10 +1,13 @@
 import React from "react";
+// import Formulario from "../FormularioVerEditar";
 
 
 const EmpleadoEdit = () => {
+
+    
     return (
         <div>
-            editando un empleado
+            {/* <Formulario/>      */}
         </div>
     );
 };

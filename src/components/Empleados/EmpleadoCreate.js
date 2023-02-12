@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { addEmpleado } from '../../actios';
 import { useNavigate } from 'react-router-dom'; // hook 
 
 const EmpleadoCreate= (props) => {
+
+
     const navegar=useNavigate();
  
     const [id,setId]=useState('');
@@ -58,14 +60,16 @@ const EmpleadoCreate= (props) => {
             COMMISSION_PCT:comision,       
         };
         props.addEmpleado(nuevoEmpleado);
+        alert("se agrego con exito");
 
-          navegar('/');
-        
+        navegar('/');    
     }; 
 
 
     return (
+        
         <div className="container">
+            
             <h1 className="display-4 container"> Nuevo Empleado</h1>
 
             <form className="row g-3 "  onSubmit={manejarEnvio} action='/'>
@@ -79,7 +83,7 @@ const EmpleadoCreate= (props) => {
                 </div>
                 <div className="col-md-4">
                     <label className="form-label">Phone</label>
-                    <input type="text" className="form-control" name="telefono" value={telefono}onChange={manejarCambio} required />
+                    <input type="text" className="form-control" name="telefono" value={telefono} onChange={manejarCambio} required />
                 </div>
                 <div className="col-md-4">
                     <label className="form-label">Hire Date</label>
@@ -105,5 +109,8 @@ const EmpleadoCreate= (props) => {
 
     );
 };
-export default connect(null,{addEmpleado} ) (EmpleadoCreate);
+
+
+
+export default connect(null,{addEmpleado}) (EmpleadoCreate);
 //addEmpleado es la accion que debe hacer en el reducer empleadosreducer

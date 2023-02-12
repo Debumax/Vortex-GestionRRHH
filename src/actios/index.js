@@ -1,7 +1,7 @@
 /*AQUI TENDREMOS LOS ACTION CREATOR , 
 cada action creator es una funcion flecha*/
 
-import { ADD_EMPLEADO, DELETE_EMPLEADO } from "./types";
+import { ADD_EMPLEADO, DELETE_EMPLEADO, EDIT_EMPLEADO } from "./types";
 
 export const addEmpleado= (payload_) => { // recibe el empleado
     return {
@@ -12,9 +12,16 @@ export const addEmpleado= (payload_) => { // recibe el empleado
     };
 }; 
 
-export const deleteEmpleado =(payload)=>{
+export const deleteEmpleado = (id)=>{
     return {
         type: DELETE_EMPLEADO,
-        payload:payload,
+        payload:id,
+    };
+}
+
+export const editarEmpleado=(payload_)=>{
+    return {
+        type: EDIT_EMPLEADO,
+        payload:payload_,
     };
 }

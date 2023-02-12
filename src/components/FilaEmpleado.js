@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const FilaEmpleado=(props) =>{
+    
     return (
         <tr>
             
@@ -12,8 +13,8 @@ const FilaEmpleado=(props) =>{
             <td>{props.emp.SALARY}</td>
             <td>{props.emp.COMMISSION_PCT}</td>
             <td>
-                <Link to={'/empleado/show'} id = {props.emp. EMPLOYER_ID}>VER</Link>
-                <Link to={'/empleado/delete'} id = {props.emp. EMPLOYER_ID}>DELETE</Link>
+                <Link to={`/empleado/show/${props.emp.EMPLOYER_ID}`} id ={props.emp.EMPLOYER_ID} className="btn btn-outline-info " style={{margin:'2%'}} >VER</Link>
+                <Link to={`/empleado/delete/${props.emp.EMPLOYER_ID}`} id = {props.emp.EMPLOYER_ID} className="btn btn-outline-danger " style={{margin:'2%'}} data-bs-target="#exampleModal" >DELETE</Link>
             </td>            
 
         </tr>

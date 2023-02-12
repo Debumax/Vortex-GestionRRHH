@@ -5,6 +5,7 @@ import empleadosReducer from './empleadosReducer';
 
 export default combineReducers ({
     //aqui se escribe el stado global
-    listaEmpleados: empleadosReducer // lo que devuelva el reducer de empleadosReducer
+    listaEmpleados: empleadosReducer ,// lo que devuelva el reducer de empleadosReducer
     // key listaEmpleados
+   
 });

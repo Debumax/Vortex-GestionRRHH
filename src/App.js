@@ -8,6 +8,7 @@ import EmpleadoEdit from "./components/Empleados/EmpleadoEdit";
 import EmpleadoCreate from "./components/Empleados/EmpleadoCreate";
 import EmpleadoDelete from "./components/Empleados/EmpleadoDelete";
 
+
 const router = createBrowserRouter([
 
   {
@@ -16,18 +17,19 @@ const router = createBrowserRouter([
   },
   {
     path :'/empleado/new' ,
-    element: <EmpleadoCreate/>
+    element: <EmpleadoCreate/>,
+
   },
   {
     path :'/empleado/edit' ,
     element: <EmpleadoEdit/>
   },
   {
-    path :'/empleado/delete' ,
+    path :'/empleado/delete/:empId' ,
     element: <EmpleadoDelete/>
   },
   {
-    path :'/empleado/show' ,
+    path :'/empleado/show/:empId' ,
     element: <EmpleadoShow/>
   },
   {
