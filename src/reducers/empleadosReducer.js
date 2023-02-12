@@ -3,9 +3,10 @@
 - y a su vez el action que debe de usar para modificar el estado (viene con el pokemon que agregaremos)
  */
 import { ADD_EMPLEADO , DELETE_EMPLEADO, EDIT_EMPLEADO } from "../actios/types";
+import { iniciando } from "./DatosIniciales";
 
 
-const empleadosReducer = (oldListEmpleados = [], action ) => {
+const empleadosReducer = (oldListEmpleados = iniciando, action ) => {
     switch (action.type) {
         case ADD_EMPLEADO:
             //creo una copia y agrego la info ,así no se modifica el estado recibido inicial
