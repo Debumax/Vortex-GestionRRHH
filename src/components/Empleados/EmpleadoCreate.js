@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { addEmpleado } from '../../actios';
 import { useNavigate } from 'react-router-dom'; // hook 
+import Encabezado from "../Encabezado";
 
 const EmpleadoCreate= (props) => {
 
@@ -69,10 +70,12 @@ const EmpleadoCreate= (props) => {
 
 
     return (
-        
-        <div className="container">
+        <>  
+            <Encabezado/>
+            <div className="container">
             
-            <h1 className="display-4 container"> Nuevo Empleado</h1>
+            <h1 className="display-5 container"> Nuevo Empleado</h1>
+            <br/>
 
             <form className="row g-3 "  onSubmit={manejarEnvio} action='/'>
                 <div className="col-md-4">
@@ -91,24 +94,27 @@ const EmpleadoCreate= (props) => {
                     <label className="form-label">Hire Date</label>
                     <input type="text" className="form-control" name="contratacion" value={contratacion} onChange={manejarCambio} required />
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text">Salary : $</span>
+                <div className="col-md-4">
+                    <label className="form-label">Salary</label>
+                    
                     <input type="text" className="form-control" name="salario" placeholder="ponga muchos numeros aqui $$$$ " value={salario} onChange={manejarCambio} required/>
-                    <span className="input-group-text">.00</span>
+                    
                 </div>
                 <div className="col-md-4">
                     <label className="form-label">Commission</label>
                     <input type="text" className="form-control" name="comision" onChange={manejarCambio} value={comision} required />
                 </div>
 
-                <div className="col-12">
-                    <button className="btn btn-primary" type="submit">Enviar</button>
-                    <button className="btn btn-primary" type="text" onClick={BtnAtras} >Cancelar</button> 
+                <div className="col-md-4">
+                    <button className="btn btn-primary" type="submit" style={{margin:'2%'}}>Enviar</button>
+                    <button className="btn btn-primary" type="text" onClick={BtnAtras} style={{margin:'2%'}}>Cancelar</button> 
                      
                 </div>
             </form>
 
         </div>
+        </>
+
 
     );
 };

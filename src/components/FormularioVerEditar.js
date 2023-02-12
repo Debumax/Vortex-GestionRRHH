@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { editarEmpleado } from "../actios";
+import Encabezado from "./Encabezado";
 
 const Formulario=(props)=>{
 
@@ -22,6 +23,8 @@ const Formulario=(props)=>{
     const [comision,setComision]=useState(''); 
     const [ver_empleado,setVer_empleado]=useState(props.lista.find(emp => emp.EMPLOYER_ID === props.id));// lo que obtengo de la lista de empleads
     const [emp,setEmp]=useState('');
+    const [titulo,setTitulo]=useState('Ver');
+    
 
 
     useEffect( () => {    
@@ -43,7 +46,8 @@ const Formulario=(props)=>{
         if (boton==='Editar') {
             setBoton('Guardar');
             setBotonVC('Cancelar');
-            setIsDisabled(false); // por ahora cuando le doy clic a editar se bloqueara , para ver si funciona 
+            setIsDisabled(false); // por ahora cuando le doy clic a editar se bloqueara , para ver si funciona
+            setTitulo('Editando'); 
         }
         if (boton==='Guardar') {
             //me va a renderizar los valores o va a ir al inicio mas + un cartel de guardo los cambios
@@ -121,45 +125,48 @@ const Formulario=(props)=>{
 
 
     return (
-        <div className="container">
+        <>
+            <Encabezado/>
+            <div className="container">
             
-        <h1 className="display-4 container">Empleado</h1>
-    
-            <form className="row g-3 "  onSubmit={BtonIrA}>
-                <div className="col-md-4">
-                    <label className="form-label">First name </label>
-                    <input type="text" className="form-control" name="nombre"  value={nombre}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Last name</label>
-                    <input type="text" className="form-control" name="nombre2" value={nombre2}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Phone</label>
-                    <input type="text" className="form-control" name="telefono" value={telefono}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Hire Date</label>
-                    <input type="text" className="form-control" name="contratacion" value={contratacion}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
-                </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text">Salary : $</span>
-                    <input type="text" className="form-control" name="salario" value={salario}  id="input_clic"  onChange={manejarCambio}  disabled={isDisabled} required/>
-                    <span className="input-group-text">.00</span>
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Commission</label>
-                    <input type="text" className="form-control" name="comision"  value={comision}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
-                </div>
-    
-                <div className="col-12">
-                    <button className="btn btn-primary" type="submit" style={{margin:'2%'}} >{boton}</button>
-                    <button className="btn btn-primary" type="text" onClick={BtnAtras} style={{margin:'2%'}} >{botonVC}</button> 
-                    
-                </div>
-            </form>
-    
-        </div>
+            <h1 className="display-4 container">{titulo} Empleado</h1>
+            <br/>
+        
+                <form className="row g-3 "  onSubmit={BtonIrA}>
+                    <div className="col-md-4">
+                        <label className="form-label">First name </label>
+                        <input type="text" className="form-control" name="nombre"  value={nombre}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Last name</label>
+                        <input type="text" className="form-control" name="nombre2" value={nombre2}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Phone</label>
+                        <input type="text" className="form-control" name="telefono" value={telefono}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Hire Date</label>
+                        <input type="text" className="form-control" name="contratacion" value={contratacion}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Salary</label>                   
+                        <input type="text" className="form-control" name="salario" value={salario}  id="input_clic"  onChange={manejarCambio}  disabled={isDisabled} required/>                    
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Commission</label>
+                        <input type="text" className="form-control" name="comision"  value={comision}  id="input_clic" onChange={manejarCambio}  disabled={isDisabled} required />
+                    </div>
+        
+                    <div className="col-md-4">
+                        <button className="btn btn-primary" type="submit" style={{margin:'2%'}} >{boton}</button>
+                        <button className="btn btn-primary" type="text" onClick={BtnAtras} style={{margin:'2%'}} >{botonVC}</button> 
+                        
+                    </div>
+                </form>
+        
+            </div>
+        </>
     );
 
 };
