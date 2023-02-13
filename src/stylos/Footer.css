@@ -19,6 +19,7 @@
     color: aliceblue;
     display: flex;
     text-decoration: none;
+    margin-left:3px;
 }
 .img-icon{
     margin:0px 10px ;
