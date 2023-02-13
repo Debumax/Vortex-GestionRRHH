@@ -10,7 +10,7 @@ const EmpleadoList = (props) => {
     };
 
     return (
-        <main >
+        <main style={{marginBottom:'-5px'}}>
             <div className="container">
             <div>
                 <table className="table table-striped ">
