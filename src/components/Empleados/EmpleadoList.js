@@ -19,7 +19,7 @@ const EmpleadoList = (props) => {
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Telefono</th>
-                            <th>Fecha de Contratacion</th>
+                            <th>Contratacion</th>
                             <th>Sueldo</th>
                             <th>Comision</th>
                             <th>Opcions</th>
