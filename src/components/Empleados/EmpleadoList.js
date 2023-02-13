@@ -10,7 +10,8 @@ const EmpleadoList = (props) => {
     };
 
     return (
-        <main className="container" style={{displa:'none'}}>
+        <main >
+            <div className="container">
             <div>
                 <table className="table table-striped ">
                     <thead>
@@ -29,6 +30,8 @@ const EmpleadoList = (props) => {
                     </tbody>
                 </table>
             </div>
+            </div>
+
         </main>
 
     );

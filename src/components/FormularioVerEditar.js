@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { editarEmpleado } from "../actios";
 import Encabezado from "./Encabezado";
+import Footer from "./Footer";
 
 const Formulario=(props)=>{
     const navegar= useNavigate();
@@ -110,8 +111,9 @@ const Formulario=(props)=>{
     return (
         <>
             <Encabezado/>
+            <div style={{marginBottom:'207px'}}>
             <div className="container">
-                <h1 className="display-4 container">{titulo} Empleado</h1>
+                <h1 className="display-5 container">{titulo} Empleado</h1>
                 <br/>
                 <form className="row g-3 "  onSubmit={BtonIrA}>
                     <div className="col-md-4">
@@ -146,6 +148,8 @@ const Formulario=(props)=>{
                     </div>
                 </form>
             </div>
+            </div>
+            <Footer/>
         </>
     );
 };

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { addEmpleado } from '../../actios';
 import { useNavigate } from 'react-router-dom'; // hook 
 import Encabezado from "../Encabezado";
+import Footer from "../Footer";
 
 const EmpleadoCreate= (props) => {
     const navegar=useNavigate();
@@ -67,6 +68,7 @@ const EmpleadoCreate= (props) => {
    return (
         <>  
             <Encabezado/>
+            <div  style={{marginBottom:'207px'}}>
             <div className="container">
                 <h1 className="display-5 container"> Nuevo Empleado</h1>
                 <br/>
@@ -103,6 +105,8 @@ const EmpleadoCreate= (props) => {
                     </div>
                 </form>
             </div>
+            </div>
+            <Footer/>
         </>
     );
 };

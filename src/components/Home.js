@@ -1,18 +1,23 @@
 import React from "react";
-import { connect } from "react-redux";
+//import { connect } from "react-redux";
 import Header from "./Header";
 import EmpleadoList from "./Empleados/EmpleadoList";
+import Footer from "./Footer";
 
-const Home = (props) => { 
+
+const Home = (props) => {
+     
     return (
         <>
             <Header/>
             <EmpleadoList/>
-            <footer style={{backgroundColor: 'rgba(44, 12, 91, 0.955)', height:'3em',position:'bottom', marginTop:'5.6em'}}/>
+            <Footer/>
+
         </> 
     );
 };
-const mapStateToProps = state => {
-    return { lista : state.listaEmpleados}
-  };
-export default connect( mapStateToProps)(Home);
+// const mapStateToProps = state => {
+//     return { lista : state.listaEmpleados}
+//   };
+// export default connect( mapStateToProps)(Home);
+export default Home;
