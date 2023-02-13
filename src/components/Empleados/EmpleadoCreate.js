@@ -6,10 +6,8 @@ import { useNavigate } from 'react-router-dom'; // hook
 import Encabezado from "../Encabezado";
 
 const EmpleadoCreate= (props) => {
-
-
     const navegar=useNavigate();
- 
+
     const [id,setId]=useState('');
     const [nombre,setNombre]=useState('');
     const [nombre2,setNombre2]=useState('');
@@ -22,7 +20,6 @@ const EmpleadoCreate= (props) => {
     const manejarCambio= (e)=>{
         const valor= e.target.value;
         const name= e.target.name;
-
          switch (name) {
             case 'nombre':
                  setNombre(valor);                        
@@ -67,59 +64,47 @@ const EmpleadoCreate= (props) => {
     const BtnAtras=()=>{
         navegar('/');
     }
-
-
-    return (
+   return (
         <>  
             <Encabezado/>
             <div className="container">
-            
-            <h1 className="display-5 container"> Nuevo Empleado</h1>
-            <br/>
+                <h1 className="display-5 container"> Nuevo Empleado</h1>
+                <br/>
+                <form className="row g-3 "  onSubmit={manejarEnvio} action='/'>
+                    <div className="col-md-4">
+                        <label className="form-label">First name </label>
+                        <input type="text" className="form-control" name="nombre"  value={nombre} onChange={manejarCambio} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Last name</label>
+                        <input type="text" className="form-control" name="nombre2" value={nombre2} onChange={manejarCambio} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Phone</label>
+                        <input type="text" className="form-control" name="telefono" value={telefono} onChange={manejarCambio} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Hire Date</label>
+                        <input type="text" className="form-control" name="contratacion" value={contratacion} onChange={manejarCambio} required />
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Salary</label> 
+                        <input type="text" className="form-control" name="salario" placeholder="ponga muchos numeros aqui $$$$ " value={salario} onChange={manejarCambio} required/>                 
+                    </div>
+                    <div className="col-md-4">
+                        <label className="form-label">Commission</label>
+                        <input type="text" className="form-control" name="comision" onChange={manejarCambio} value={comision} required />
+                    </div>
 
-            <form className="row g-3 "  onSubmit={manejarEnvio} action='/'>
-                <div className="col-md-4">
-                    <label className="form-label">First name </label>
-                    <input type="text" className="form-control" name="nombre"  value={nombre} onChange={manejarCambio} required />
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Last name</label>
-                    <input type="text" className="form-control" name="nombre2" value={nombre2} onChange={manejarCambio} required />
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Phone</label>
-                    <input type="text" className="form-control" name="telefono" value={telefono} onChange={manejarCambio} required />
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Hire Date</label>
-                    <input type="text" className="form-control" name="contratacion" value={contratacion} onChange={manejarCambio} required />
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Salary</label>
-                    
-                    <input type="text" className="form-control" name="salario" placeholder="ponga muchos numeros aqui $$$$ " value={salario} onChange={manejarCambio} required/>
-                    
-                </div>
-                <div className="col-md-4">
-                    <label className="form-label">Commission</label>
-                    <input type="text" className="form-control" name="comision" onChange={manejarCambio} value={comision} required />
-                </div>
-
-                <div className="col-md-4">
-                    <button className="btn btn-primary" type="submit" style={{margin:'2%'}}>Enviar</button>
-                    <button className="btn btn-primary" type="text" onClick={BtnAtras} style={{margin:'2%'}}>Cancelar</button> 
-                     
-                </div>
-            </form>
-
-        </div>
+                    <div className="col-md-4">
+                        <button className="btn btn-primary" type="submit" style={{margin:'2%'}}>Guardar</button>
+                        <button className="btn btn-primary" type="text" onClick={BtnAtras} style={{margin:'2%'}}>Cancelar</button> 
+                        
+                    </div>
+                </form>
+            </div>
         </>
-
-
     );
 };
-
-
-
 export default connect(null,{addEmpleado}) (EmpleadoCreate);
 //addEmpleado es la accion que debe hacer en el reducer empleadosreducer

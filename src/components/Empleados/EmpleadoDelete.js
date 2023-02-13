@@ -3,13 +3,11 @@ import { connect } from "react-redux";
 import { useNavigate,useParams } from 'react-router-dom'; // hook 
 import { deleteEmpleado } from "../../actios";
 
-
 const EmpleadoDelete=(props)=>{
     const navegar=useNavigate();
 
     const parametro=useParams();//hook router
     const id=parametro.empId;
-    console.log('es el id mamalon'+id);
     
     const borra=()=>{
         props.deleteEmpleado(id);
@@ -22,14 +20,11 @@ const EmpleadoDelete=(props)=>{
 
     return (
         <>
-       
-        <article className="modal" style={{display:'contents'}} >
-           
+            <article className="modal" style={{display:'contents'}} >  
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title">Está eliminando un empleado</h5>
-                            
+                            <h5 className="modal-title">Está eliminando un empleado</h5> 
                         </div>
                         <div className="modal-body">
                             <p>El empleado dejará de existir por toda la eternidad</p>
@@ -41,14 +36,8 @@ const EmpleadoDelete=(props)=>{
                         </div>
                     </div>
                 </div>
-
-        </article>
-        
-        
-        </>
-        
+            </article>
+        </>    
     );
 };
-
-
 export default connect(null,{deleteEmpleado} )( EmpleadoDelete);

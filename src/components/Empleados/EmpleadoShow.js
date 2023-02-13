@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'; // hook
 import FormularioVerEditar from '../FormularioVerEditar';
 
 const EmpleadoShow=(props)=>{
-
     const [ver_empleado,setVer_empleado]=useState('');
 
     const parametro=useParams();//hook router
@@ -20,5 +19,4 @@ const EmpleadoShow=(props)=>{
 const mapStateToProps = state => {
     return { lista : state.listaEmpleados}
  };
-
 export default connect(mapStateToProps)(EmpleadoShow);

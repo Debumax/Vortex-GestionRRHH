@@ -5,14 +5,10 @@ import { editarEmpleado } from "../actios";
 import Encabezado from "./Encabezado";
 
 const Formulario=(props)=>{
-
     const navegar= useNavigate();
-    const [stateForm,setStateForm]=useState(0);
     const [boton,setBoton]=useState('Editar');//editar /guardar
     const [botonVC,setBotonVC]=useState('Home');//home / cancelar
     const [isDisabled,setIsDisabled]=useState(true);//habilita/deshabilita los input
- 
-    
     //estados iniciales
     const [id,setId]=useState('');
     const [nombre,setNombre]=useState('');
@@ -22,22 +18,16 @@ const Formulario=(props)=>{
     const [salario,setSalario]=useState('');
     const [comision,setComision]=useState(''); 
     const [ver_empleado,setVer_empleado]=useState(props.lista.find(emp => emp.EMPLOYER_ID === props.id));// lo que obtengo de la lista de empleads
-    const [emp,setEmp]=useState('');
     const [titulo,setTitulo]=useState('Ver');
     
-
-
     useEffect( () => {    
-
-            setNombre(ver_empleado.FIRST_NAME);
-            setNombre2(ver_empleado.LAST_NAME);
-            setTelefono(ver_empleado.PHONE_NUMBER);
-            setContratacion(ver_empleado.HIRE_DATE);
-            setSalario(ver_empleado.SALARY);
-            setComision(ver_empleado.COMMISSION_PCT);
-            setId(ver_empleado.EMPLOYER_ID);
-            
-
+        setNombre(ver_empleado.FIRST_NAME);
+        setNombre2(ver_empleado.LAST_NAME);
+        setTelefono(ver_empleado.PHONE_NUMBER);
+        setContratacion(ver_empleado.HIRE_DATE);
+        setSalario(ver_empleado.SALARY);
+        setComision(ver_empleado.COMMISSION_PCT);
+        setId(ver_empleado.EMPLOYER_ID);
     },[]);
 
     // me lleva  a editar-empleado o desencadena el update 
@@ -51,7 +41,6 @@ const Formulario=(props)=>{
         }
         if (boton==='Guardar') {
             //me va a renderizar los valores o va a ir al inicio mas + un cartel de guardo los cambios
-
             const empEditado={
                 EMPLOYER_ID:id ,
                 FIRST_NAME:nombre,
@@ -59,25 +48,24 @@ const Formulario=(props)=>{
                 PHONE_NUMBER:telefono,
                 HIRE_DATE:contratacion,
                 SALARY:salario,
-                COMMISSION_PCT:comision
-                
+                COMMISSION_PCT:comision     
             }
             //console.log(empEditado);
             props.editarEmpleado(empEditado);
             setIsDisabled(true);
             setBoton('Editar');
             setBotonVC('Home');
-            alert('guardo los cambios');          
-            
+            alert('guardo los cambios'); 
+            setTitulo('Ver')              
         }
     };
-
     //me lleva al home (volver) o al "vista de ver" (cancelar)
     const BtnAtras=(e)=>{
         e.preventDefault();
         if (botonVC==='Cancelar' && boton==='Guardar') {
             setBoton('Editar');
-            setBotonVC('Home'); 
+            setBotonVC('Home');
+            setTitulo('Ver') 
             setNombre(ver_empleado.FIRST_NAME);
             setNombre2(ver_empleado.LAST_NAME);
             setTelefono(ver_empleado.PHONE_NUMBER);
@@ -89,49 +77,42 @@ const Formulario=(props)=>{
         }
         if (botonVC==='Home') {
             navegar('/');
-        }
-        
+        } 
     };
-
 
     const manejarCambio= (e)=>{
-            const valor= e.target.value;
-            const name= e.target.name;
-                    
-            switch (name) {
-                case 'nombre':    
-                    setNombre(valor);                        
-                    break;
-                case 'nombre2':
-                    setNombre2(valor);
-                    break;
-                case 'telefono':
-                    setTelefono(valor); 
-                    break;
-                case 'contratacion':
-                    setContratacion(valor);
-                    break;
-                case 'salario':
-                    setSalario(valor);
-                    break;
-                case 'comision':
-                    setComision(valor);  
-                    break;
-                default:
-                    break;
-            }           
-
+        const valor= e.target.value;
+        const name= e.target.name;
+                 
+        switch (name) {
+            case 'nombre':    
+                setNombre(valor);                        
+                break;
+            case 'nombre2':
+                setNombre2(valor);
+                break;
+            case 'telefono':
+                setTelefono(valor); 
+                break;
+            case 'contratacion':
+                setContratacion(valor);
+                break;
+            case 'salario':
+                setSalario(valor);
+                break;
+            case 'comision':
+                setComision(valor);  
+                break;
+            default:
+                break;
+        }           
     };
-
-
     return (
         <>
             <Encabezado/>
             <div className="container">
-            
-            <h1 className="display-4 container">{titulo} Empleado</h1>
-            <br/>
-        
+                <h1 className="display-4 container">{titulo} Empleado</h1>
+                <br/>
                 <form className="row g-3 "  onSubmit={BtonIrA}>
                     <div className="col-md-4">
                         <label className="form-label">First name </label>
@@ -164,16 +145,12 @@ const Formulario=(props)=>{
                         
                     </div>
                 </form>
-        
             </div>
         </>
     );
-
 };
-
 const mapStateToProps = state => {
     return { lista : state.listaEmpleados}
  };
-
 export default connect(mapStateToProps,{editarEmpleado})(Formulario);
 
