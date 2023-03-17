@@ -3,51 +3,52 @@ const ErrorResponse = require('../helpers/ErrorResponse');
 
 
 
-const getAllEmployees = async (req, res,next) => {
+const getAllEmployees = async (req, res, next) => {
     try {
         if (Object.keys(req.query).length === 0) { // no le paso ningun query solo para poder ver todos los elementos
-        
+
             const empleados = await modelEmployee.getAllEmployees(0, 0);
             res.json({
                 totalRow: empleados.totalRow,
                 data: empleados.resultado
-    
+
             });
         } else {
-            if (Object.keys(req.query).length === 1 && (req.query.pagina!= undefined)) {//numero de pagina 
+            if (Object.keys(req.query).length === 1 && (req.query.pagina != undefined)) {//numero de pagina 
                 const pagina = parseInt(req.query.pagina);
                 const empleados = await modelEmployee.getAllEmployees(pagina, 0);
                 res.json({
                     paginastotal: empleados.cantPag,
                     data: empleados.resultado
                 });
-        
-        
+
+
             } else {
-                console.log("estoy en la parte grosa  ")
+                //console.log("estoy en la parte grosa  ")
                 const { pagina, nombre, apellido, finicio, ffin, rol } = req.query;
-        
+
                 const filtro = { nombre, apellido, finicio, ffin, rol };
-        
+
                 const empleados = await modelEmployee.getAllEmployees(pagina, filtro);
-                res.json({ 
-                    paginastotal:empleados.cantPag,
-                    data: empleados.resultado });
-        
+                res.json({
+                    paginastotal: empleados.cantPag,
+                    data: empleados.resultado
+                });
+
             }
         }
     } catch (error) {
-        next( 
-            res.status(500).json({mensaje: 'error interno'})
+        next(
+            res.status(500).json({ mensaje: 'error interno' })
             //new ErrorResponse('error en controllador', 500 )
         );
     }
-    
+
 
 
 };
 
-const getEmployeById = async (req, res,next) => {
+const getEmployeById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const empleado = await modelEmployee.getEmployeById(id);
@@ -62,12 +63,12 @@ const getEmployeById = async (req, res,next) => {
         }
 
     } catch (error) {
-        next( 
-            new ErrorResponse('error en controllador', 404 )
+        next(
+            new ErrorResponse('error en controllador', 404)
         );
     }
 };
-const createEmploye = async (req, res,next) => {
+const createEmploye = async (req, res, next) => {
     try {
         const { first_name, last_name, cuit, team_id, join_date, rol } = req.body;
         const empleado = { first_name, last_name, cuit, team_id, join_date, rol };
@@ -78,19 +79,19 @@ const createEmploye = async (req, res,next) => {
             data: getempleado
         });
     } catch (error) {
-        next( 
-            new ErrorResponse('error en controllador', 500 )
+        next(
+            new ErrorResponse('error en controllador', 500)
         );
     }
 };
 
-const updateEmployee = async (req, res,next) => {
+const updateEmployee = async (req, res, next) => {
     try {
         const { first_name, last_name, cuit, team_id, join_date, rol } = req.body;
         const { id } = req.params;
         const empleado = { first_name, last_name, cuit, team_id, join_date, rol };
         const getempleado = await modelEmployee.getEmployeById(id);
-        
+
         if (getempleado.length != 0) {
             const empleado_actualizado = await modelEmployee.updateEmployee(id, empleado);
             const getempleado = await modelEmployee.getEmployeById(id);
@@ -102,13 +103,13 @@ const updateEmployee = async (req, res,next) => {
         }
 
     } catch (error) {
-        next( 
-            new ErrorResponse('error en controllador', 500 )
+        next(
+            new ErrorResponse('error en controllador', 500)
         );
     }
 };
 
-const deleteEmployee = async (req, res,next) => {
+const deleteEmployee = async (req, res, next) => {
     try {
         const { id } = req.params;
         const getempleado = await modelEmployee.getEmployeById(id);
@@ -122,8 +123,8 @@ const deleteEmployee = async (req, res,next) => {
             res.status(404).json({ mensaje: "UPS!! el empleado no existe " })
         }
     } catch (error) {
-        next( 
-            new ErrorResponse('error en controllador', 500 )
+        next(
+            new ErrorResponse('error en controllador', 500)
         );
     }
 };

@@ -3,7 +3,7 @@ const connection = require('./../database/db');
 const getAllAssets = async () => {
     try {
         const context = await connection.getConnection();
-        const resultado = await context.query("SELECT * from asset");
+        const resultado = await context.query("SELECT * from asset  ORDER BY name ASC");
         return (resultado);
     } catch (error) {
         
@@ -24,7 +24,6 @@ const getAssetsByEmployeeId = async (id) => {
     try {
         const context = await connection.getConnection();
         const resultado = await context.query("SELECT ass.id_asset, ass.id_empoyee_asset, ass.name, ass.type, ass.code, ass.marca, ass.description, ass.purchase_date FROM asset ass INNER JOIN employee on ass.id_empoyee_asset=employee.id_employee WHERE employee.id_employee=?;", [id]);
-        
         return (resultado);
     } catch (error) {
         

@@ -20,6 +20,8 @@ const getAssetsByEmployeeId = async (req, res,next) => {
     try {
         const { id } = req.params;
         const asset = await modelAsset.getAssetsByEmployeeId(id);
+
+        
         if (asset.length) {
             res.json({ data: asset });
         } else {

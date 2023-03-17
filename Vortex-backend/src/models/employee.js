@@ -1,12 +1,13 @@
 const connection = require('./../database/db');
 
+
 const getAllEmployees = async (pagina, filtro) => {
     try {
         const context = await connection.getConnection();
         const limite = 5;
         const inicio = (pagina - 1) * limite;
 
-        if (pagina==0 && filtro==0) {
+        if (pagina==0 && filtro==0) {// me devuelve lo que un get tradicional 
             
             const resultado = await context.query("SELECT * from employee  ORDER BY last_name ASC");
             const totalRow= resultado.length;
